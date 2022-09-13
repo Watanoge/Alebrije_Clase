@@ -23,22 +23,22 @@ public class BasePlayer : MonoBehaviour
         
     void Update()
     {
-        if (Input.GetKeyDown(movementUp) && verticalMovement) //Mover Arriba
+        if (Input.GetKey(movementUp) && verticalMovement) //Mover Arriba
         {
             MoveDirection(Direction.Up);
         }
 
-        if (Input.GetKeyDown(movementDown) && verticalMovement) //Mover Abajo
+        if (Input.GetKey(movementDown) && verticalMovement) //Mover Abajo
         {
             MoveDirection(Direction.Down);
         }
 
-        if (Input.GetKeyDown(movementLeft) && horizontalMovement) //Mover izquierda
+        if (Input.GetKey(movementLeft) && horizontalMovement) //Mover izquierda
         {
             MoveDirection(Direction.Left);
         }
 
-        if (Input.GetKeyDown(movementRight) && horizontalMovement) //Mover Derecha
+        if (Input.GetKey(movementRight) && horizontalMovement) //Mover Derecha
         {
             MoveDirection(Direction.Right);
         }
