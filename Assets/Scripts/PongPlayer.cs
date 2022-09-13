@@ -5,7 +5,7 @@ using UnityEngine;
 public class PongPlayer : BasePlayer
 {
     public override void MoveDirection(Direction direction){
-        Debug.Log("Procesando movimiento Dese Pong Versión 2");
+        Debug.Log("Procesando " + gameObject.name + " movimiento Dese Pong Versión 2");
     }
 
     public override void ProcessCollision(){

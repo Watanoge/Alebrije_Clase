@@ -6,37 +6,44 @@ public enum Direction { Up, Down, Left, Right }
 
 public class BasePlayer : MonoBehaviour
 {
-    public bool canShoot, //¿puede disparar?
-        detectCollisions, //¿puede detectar colisiones?
+    [Header("Controles")]
+    public KeyCode movementUp;
+    public KeyCode movementDown, movementLeft, movementRight, shoot;
+
+    [Header("Configuración")]
+    public bool canShoot; //¿puede disparar?
+    
+    public bool detectCollisions, //¿puede detectar colisiones?
         horizontalMovement, //¿puede moverse horizontalmente?
         verticalMovement; //¿puede moverse verticalmente?
 
-    public float maxSpeed,  //Velocidad máxima
-        currentSpeed; //Velocidad Actual
+    [Header("Variables")]
+    public float maxSpeed;  //Velocidad máxima
+    public float currentSpeed; //Velocidad Actual
         
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.W) && verticalMovement) //Mover Arriba
+        if (Input.GetKeyDown(movementUp) && verticalMovement) //Mover Arriba
         {
             MoveDirection(Direction.Up);
         }
 
-        if (Input.GetKeyDown(KeyCode.S) && verticalMovement) //Mover Abajo
+        if (Input.GetKeyDown(movementDown) && verticalMovement) //Mover Abajo
         {
             MoveDirection(Direction.Down);
         }
 
-        if (Input.GetKeyDown(KeyCode.A) && horizontalMovement) //Mover izquierda
+        if (Input.GetKeyDown(movementLeft) && horizontalMovement) //Mover izquierda
         {
             MoveDirection(Direction.Left);
         }
 
-        if (Input.GetKeyDown(KeyCode.D) && horizontalMovement) //Mover Derecha
+        if (Input.GetKeyDown(movementRight) && horizontalMovement) //Mover Derecha
         {
             MoveDirection(Direction.Right);
         }
 
-        if (Input.GetKeyDown(KeyCode.Space) && canShoot) //Disparamos
+        if (Input.GetKeyDown(shoot) && canShoot) //Disparamos
         {
             Shoot();
         }
