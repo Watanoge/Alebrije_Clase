@@ -132,6 +132,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 15186073}
+  - component: {fileID: 15186074}
   m_Layer: 5
   m_Name: UI
   m_TagString: Untagged
@@ -160,6 +161,22 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &15186074
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 15186072}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 985d787298c67914587df785548da454, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pointsLeftAmount: 0
+  pointsRightAmount: 0
+  pointsLeft: {fileID: 1378180204}
+  pointsRight: {fileID: 241974962}
 --- !u!1 &24873095
 GameObject:
   m_ObjectHideFlags: 0
@@ -407,6 +424,8 @@ GameObject:
   - component: {fileID: 390530450}
   - component: {fileID: 390530449}
   - component: {fileID: 390530451}
+  - component: {fileID: 390530453}
+  - component: {fileID: 390530452}
   m_Layer: 5
   m_Name: Pelota
   m_TagString: Untagged
@@ -487,6 +506,43 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 12.5
+--- !u!50 &390530452
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 390530447}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 6200000, guid: 954f232c3fa6bf34dbae01fd2a1e1752, type: 2}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 1
+  m_Constraints: 4
+--- !u!114 &390530453
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 390530447}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 539fbff75a6cf4e40839b559f32ed629, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ui: {fileID: 15186074}
+  speed: 750
+  rectTransform: {fileID: 390530448}
+  rb: {fileID: 390530452}
 --- !u!1 &482329940
 GameObject:
   m_ObjectHideFlags: 0
@@ -549,7 +605,7 @@ MonoBehaviour:
   detectCollisions: 0
   horizontalMovement: 0
   verticalMovement: 1
-  maxSpeed: 5000
+  maxSpeed: 3000
   currentSpeed: 0
   rectTransform: {fileID: 482329941}
   rigidBody: {fileID: 482329946}
@@ -639,7 +695,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 5
 --- !u!61 &482329947
 BoxCollider2D:
@@ -680,7 +736,7 @@ GameObject:
   - component: {fileID: 648651931}
   - component: {fileID: 648651933}
   m_Layer: 5
-  m_Name: Borde Derecho
+  m_Name: Borde Derecha
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -862,6 +918,52 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1 &757996338
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 757996340}
+  - component: {fileID: 757996339}
+  m_Layer: 0
+  m_Name: Orden
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!114 &757996339
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 757996338}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ac99b45e273b2c4aaa65601decb5b5e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _updateCount: 0
+  _lateCount: 0
+  _fixedCount: 0
+--- !u!4 &757996340
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 757996338}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1524.3728, y: 1140.1843, z: -1830.9508}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &806690795
 GameObject:
   m_ObjectHideFlags: 0
@@ -924,7 +1026,7 @@ MonoBehaviour:
   detectCollisions: 0
   horizontalMovement: 0
   verticalMovement: 1
-  maxSpeed: 5000
+  maxSpeed: 3000
   currentSpeed: 0
   rectTransform: {fileID: 806690796}
   rigidBody: {fileID: 806690801}
@@ -1014,7 +1116,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 5
 --- !u!61 &806690802
 BoxCollider2D:
@@ -1029,7 +1131,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 25, y: 0}
+  m_Offset: {x: -25, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}

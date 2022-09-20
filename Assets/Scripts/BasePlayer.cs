@@ -21,7 +21,7 @@ public class BasePlayer : MonoBehaviour
     public float maxSpeed;  //Velocidad máxima
     public float currentSpeed; //Velocidad Actual
         
-    void Update()
+    void FixedUpdate()
     {
         if (Input.GetKey(movementUp) && verticalMovement) //Mover Arriba
         {
