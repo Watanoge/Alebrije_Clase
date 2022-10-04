@@ -20,7 +20,6 @@ public class PongBall : MonoBehaviour
     void Start()
     {
         startingPosition = rectTransform.localPosition;
-        Launch();
     }
 
     public void Launch(){
@@ -45,7 +44,6 @@ public class PongBall : MonoBehaviour
     public void ResetPosition(){
         rb.velocity = new Vector2(0,0);
         rectTransform.localPosition = startingPosition;
-        Invoke("Launch", 3);
     }
 
     private void OnCollisionEnter2D(Collision2D other)
