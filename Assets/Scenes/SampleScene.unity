@@ -605,7 +605,7 @@ MonoBehaviour:
   detectCollisions: 0
   horizontalMovement: 0
   verticalMovement: 1
-  maxSpeed: 3000
+  maxSpeed: 2000
   currentSpeed: 0
   rectTransform: {fileID: 482329941}
   rigidBody: {fileID: 482329946}
@@ -1026,7 +1026,7 @@ MonoBehaviour:
   detectCollisions: 0
   horizontalMovement: 0
   verticalMovement: 1
-  maxSpeed: 3000
+  maxSpeed: 2000
   currentSpeed: 0
   rectTransform: {fileID: 806690796}
   rigidBody: {fileID: 806690801}

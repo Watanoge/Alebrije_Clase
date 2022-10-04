@@ -13,6 +13,10 @@ public class PongBall : MonoBehaviour
 
     Vector3 startingPosition;
 
+    Vector2 SpeedVector(){
+        return new Vector2(GameManager.HorizontalSpeed(speed), GameManager.VerticalSpeed(speed));
+    }
+
     void Start()
     {
         startingPosition = rectTransform.localPosition;
@@ -35,7 +39,7 @@ public class PongBall : MonoBehaviour
             y = -1;
         }
 
-        rb.velocity = new Vector2(x, y) * speed;
+        rb.velocity = new Vector2(x, y) * SpeedVector();
     }
 
     public void ResetPosition(){
@@ -70,7 +74,7 @@ public class PongBall : MonoBehaviour
 
         Vector2 direction = new Vector2(_direction, verticalDirection);
 
-        rb.velocity = direction * speed;
+        rb.velocity = direction * SpeedVector();
     }
 
     public void BounceFromWall(float _direction){
@@ -80,6 +84,6 @@ public class PongBall : MonoBehaviour
 
         Vector2 direction = new Vector2(horizontalDirection, _direction);
 
-        rb.velocity = direction * speed;
+        rb.velocity = direction * SpeedVector();
     }
 }

@@ -15,13 +15,13 @@ public class PongPlayer : BasePlayer
         {
             case Direction.Up:
                 if(insideUpperLimit){
-                    rigidBody.MovePosition(rigidBody.position + (Vector2.up * maxSpeed * Time.deltaTime));
+                    rigidBody.MovePosition(rigidBody.position + (Vector2.up * GameManager.VerticalSpeed(maxSpeed) * Time.deltaTime));
                     // rectTransform.localPosition += Vector2.up * maxSpeed * Time.deltaTime;
                 }
                 break;
             case Direction.Down:
                 if(insideLowerLimit){
-                    rigidBody.MovePosition(rigidBody.position - (Vector2.up * maxSpeed * Time.deltaTime));
+                    rigidBody.MovePosition(rigidBody.position - (Vector2.up * GameManager.VerticalSpeed(maxSpeed) * Time.deltaTime));
                     // rectTransform.localPosition -= Vector2.up * maxSpeed * Time.deltaTime;
                 }
                 break;
