@@ -5,14 +5,24 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
-    public CanvasGroup fadeImage;
+    public CanvasGroup fadeImage, pauseGroup;
+    public bool isPaused;
+    public KeyCode pauseKey;
+
+    public float pauseMenuFadeTime = 0.5f;
+
+    string currentSceneName;
+    bool pausableScene;
 
     private void Awake()
     {
-        DontDestroyOnLoad(gameObject);
-        instance = this;
-
-        ChangeScene("MainMenu");
+        if(instance == null){
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+            ChangeScene("MainMenu");
+        }else{
+            Destroy(gameObject);
+        }
     }
 
     public static float HorizontalSpeed(float speed){
@@ -28,9 +38,18 @@ public class GameManager : MonoBehaviour
     }
 
     IEnumerator ChangeSceneCoroutine(string sceneName){
+        if(isPaused){
+            TogglePauseMenu(false);
+            yield return new WaitForSeconds(pauseMenuFadeTime);
+        }
+
         CanvasGroupFade(0, 1, 0.5f, fadeImage);
         yield return new WaitForSeconds(1);
         CustomSceneManager.ChangeScene(sceneName);
+
+        currentSceneName = sceneName;
+        pausableScene = currentSceneName != "MainMenu" && currentSceneName != "Splash";
+
         CanvasGroupFade(1, 0, 0.5f, fadeImage);
     }
 
@@ -67,5 +86,35 @@ public class GameManager : MonoBehaviour
         #else
             Application.Quit();
         #endif
+    }
+
+    public void TogglePauseMenu(bool open){
+        StartCoroutine(TogglePauseCoroutine(open));
+    }
+
+    IEnumerator TogglePauseCoroutine(bool open){
+        if(open){
+            CanvasGroupFade(0, 1, pauseMenuFadeTime, pauseGroup);
+            yield return new WaitForSeconds(pauseMenuFadeTime);
+            isPaused = true;
+            Time.timeScale = 0;
+        }else{
+            Time.timeScale = 1;
+            CanvasGroupFade(1, 0, pauseMenuFadeTime, pauseGroup);
+            yield return new WaitForSeconds(pauseMenuFadeTime);
+            isPaused = false;
+        }
+    }
+
+    void Update()
+    {
+        if (Input.GetKeyDown(pauseKey) && pausableScene) //Mover Arriba
+        {
+            if(isPaused){
+                TogglePauseMenu(false);
+            }else{
+                TogglePauseMenu(true);
+            }
+        }
     }
 }
