@@ -2,12 +2,28 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+[System.Serializable]
+public class GameConfig{
+    public PongConfig pong;
+}
+
+[System.Serializable]
+public class PongConfig
+{
+    public float ballSpeed = 750;
+    public float playerSpeed = 2000;
+    public int pointsToWin = 3;
+}
+
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
     public CanvasGroup fadeImage, pauseGroup;
     public bool isPaused;
     public KeyCode pauseKey;
+
+    public GameConfig currentConfig;
 
     public float pauseMenuFadeTime = 0.5f;
 

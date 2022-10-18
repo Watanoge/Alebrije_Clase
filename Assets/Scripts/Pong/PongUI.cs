@@ -6,19 +6,30 @@ using TMPro;
 public class PongUI : MonoBehaviour
 {
     public int pointsLeftAmount, pointsRightAmount, pointsToWin;
-    public TextMeshProUGUI pointsLeft, pointsRight, counterText, winnerText;
+    public TextMeshProUGUI startText, pointsLeft, pointsRight, counterText, winnerText;
     public CanvasGroup counterObject, startGameObject, endGameObject;
 
     public PongBall ball;
+    public PongPlayer leftPlayer, rightPlayer;
     
     void Start()
     {
         RestartGame();
     }
 
+    void LoadFromManager(){
+        ball.speed = GameManager.instance.currentConfig.pong.ballSpeed * 100;
+        leftPlayer.maxSpeed = GameManager.instance.currentConfig.pong.playerSpeed * 100;
+        rightPlayer.maxSpeed = GameManager.instance.currentConfig.pong.playerSpeed * 100;
+        pointsToWin = GameManager.instance.currentConfig.pong.pointsToWin;
+
+        startText.text = $"¡Esto es Pong! Se juega así y asá. Necesitas {pointsToWin} para ganar. ¡Éxito!";
+    }
+
     public void RestartGame(){
         pointsLeftAmount = pointsRightAmount = 0;
         UpdatePoints(false);
+        LoadFromManager();
     }
 
     public void UpdatePoints(bool canStart = true){
@@ -66,6 +77,10 @@ public class PongUI : MonoBehaviour
 
     public void GameStart(){
         StartCoroutine(GameStartCoroutine());
+    }
+
+    public void GameEnd(){
+        GameManager.instance.ChangeScene("MainMenu");
     }
 
     IEnumerator GameStartCoroutine(){

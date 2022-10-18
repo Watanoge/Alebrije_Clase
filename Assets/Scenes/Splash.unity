@@ -949,6 +949,12 @@ MonoBehaviour:
   pauseGroup: {fileID: 829071977}
   isPaused: 0
   pauseKey: 27
+  currentConfig:
+    pong:
+      ballSpeed: 7.5
+      playerSpeed: 20
+      pointsToWin: 3
+  pauseMenuFadeTime: 0.5
 --- !u!4 &1462164682
 Transform:
   m_ObjectHideFlags: 0
