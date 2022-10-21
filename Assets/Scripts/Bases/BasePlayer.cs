@@ -42,7 +42,9 @@ public class BasePlayer : MonoBehaviour
         {
             MoveDirection(Direction.Right);
         }
+    }
 
+    void Update(){
         if (Input.GetKeyDown(shoot) && canShoot) //Disparamos
         {
             Shoot();

@@ -49,6 +49,10 @@ public class GameManager : MonoBehaviour
         return speed * (Screen.height / 1080f);
     }
 
+    public static Vector2 OverallSpeed(float speed){
+        return speed * new Vector2(Screen.width / 1920f, Screen.height / 1080f);
+    }
+
     public void ChangeScene(string sceneName){
         StartCoroutine(ChangeSceneCoroutine(sceneName));
     }
