@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class GalagaEnemy : BaseDamagable
 {
+    public int score;
+    
     public override void Kill(){
-        gameObject.SetActive(false);
+        base.Kill();
+        Debug.Log("Procesando Muerte Enemigo");
     }
 }

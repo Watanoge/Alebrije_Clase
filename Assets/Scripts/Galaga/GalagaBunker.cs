@@ -1,12 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class GalagaBunker : BaseDamagable
 {
     public Sprite[] spriteList;
-    public Image renderer;
 
     public override void InitializeDamagable(){
         base.InitializeDamagable();
@@ -38,7 +36,7 @@ public class GalagaBunker : BaseDamagable
     }
 
     public override void Kill(){
-        Debug.Log("Procesando Muerte");
-        gameObject.SetActive(false);
+        base.Kill();
+        Debug.Log("Procesando Muerte Bunker");
     }
 }

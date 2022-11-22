@@ -40,6 +40,7 @@ public class GalagaPlayer : BasePlayer
 
         GalagaBullet currentBullet = Instantiate(bulletPrefab, spawnPoint.position, Quaternion.identity);
         currentBullet.transform.SetParent(bulletSpawnParent);
+        currentBullet.transform.localScale = Vector3.one;
         currentBullet.StartMovement(Vector2.up);
 
         yield return new WaitForSeconds(shootCooldownTime);
